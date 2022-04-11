@@ -26,7 +26,7 @@ class _GetSongDetailsState extends State<GetSongDetails> {
 
   String currentSongName="";
   String currentSongId="";
-  static const token = "BQD77ccYmYEvrwoO32fC9YIPfwZQN74jjcHFwIf-T9WdSxCvZyX5S4FXAVPsC1RPz1Cq3l2vpD__2vFqbjSG766gMKT8pilV6L5GZHLIqBvdmsqld0ClGJzu-f83DNtrhmSnuAPizS9e4l8jvi23vNpWePsikFSrxHh7sPxL8KVL";
+  static const token = "BQD5z8LZLwgxChQKQ9Lst8mmfcPOiujPvM3e0tELnBchA1NoGDJZB7nSZQDPVu08mjUZG1JXpqNbTC6qrQ90DctbzZGVbhV5WUpAObpHDDqJP0jCigZRmjUW3V-U9easaKvv2McNzXVmRjk1AbBpVNBUPb4-DOK5iZ-qiqjsnRrX";
 //  String accessToken="";
   bool currentSongFetched = false;
   bool featuresFetched = false;
