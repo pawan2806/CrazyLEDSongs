@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.sahil.crazy_led_songs">
+    <uses-permission android:name="android.permission.INTERNET" />
    <application
         android:label="crazy_led_songs"
         android:icon="@mipmap/ic_launcher">
