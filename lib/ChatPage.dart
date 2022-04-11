@@ -48,7 +48,6 @@ class _ChatPage extends State<ChatPage> {
   @override
   void initState() {
     super.initState();
-
     BluetoothConnection.toAddress(widget.server.address).then((_connection) {
       print('Connected to the device');
       connection = _connection;
@@ -295,6 +294,24 @@ class _ChatPage extends State<ChatPage> {
                 ],
               ),
             ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  margin: const EdgeInsets.all(8.0),
+                  child: IconButton(
+                      icon: const Icon(
+                        Icons.lightbulb,
+                        size: 35.0,
+                      ),
+                      onPressed: isConnected ? () {
+                        String jsonString = json.encode(songFeatures);
+                        _sendMessage(jsonString);
+                      }:null),
+                ),
+              ],
+            ),
             Divider(),
             Padding(
               padding: const EdgeInsets.all(0.0),
@@ -325,6 +342,7 @@ class _ChatPage extends State<ChatPage> {
                 ],
               ),
             ),
+
 
             Flexible(
               child: ListView(

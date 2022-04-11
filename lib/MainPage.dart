@@ -36,7 +36,7 @@ class _MainPage extends State<MainPage> {
   @override
   void initState() {
     super.initState();
-
+    print(songFeatures);
     // Get current state
     FlutterBluetoothSerial.instance.state.then((state) {
       setState(() {

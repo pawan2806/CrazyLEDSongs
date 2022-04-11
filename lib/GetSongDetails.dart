@@ -1,6 +1,7 @@
 // ignore: file_names
 // ignore_for_file: file_names
 
+import 'package:crazy_led_songs/MainPage.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -8,6 +9,7 @@ import 'package:crazy_led_songs/helpers/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import 'package:scoped_model/scoped_model.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 import 'helpers/constants.dart';
 import './BackgroundCollectedPage.dart';
 import './BackgroundCollectingTask.dart';
@@ -15,7 +17,6 @@ import './ChatPage.dart';
 import './DiscoveryPage.dart';
 import './SelectBondedDevicePage.dart';
 import 'package:spotify/spotify.dart';
-
 class GetSongDetails extends StatefulWidget {
   @override
   _GetSongDetailsState createState() => _GetSongDetailsState();
@@ -25,41 +26,51 @@ class _GetSongDetailsState extends State<GetSongDetails> {
 
   String currentSongName="";
   String currentSongId="";
-  Map songFeatures={};
-
-  static const token = "BQA1l5yqonjnBXdiKP3ZIlRVotQMC3WFr1Y3pPYFyjOhz95vjA0abIqyDQZu_dw48eBpsE8B46rf_l4QsatJEbcj3aRQJaKafJWW3eHxkYvHARdbkLfhToChJWFgYF5Agd2FGBJwOpwtSDJfNi33u5LNk0WllxhoG7O7AVI7R-2O";
-  String accessToken="";
+  static const token = "BQBIxzDznZ60IMQtY7Z4rbN6JtmiaB0D-3YAG4FEZni0bUqWeTtT32oNsJhWumNNcGjrmE4wBmlM_iFlJzNin_djJ1kxYnbrQWAJjA89nzV-NctdwbKjIRah9Nbp2S5LVjh-1sVHv2Otxc2L_APBU4PiSLecUF5FP4L1y57nqY7b";
+//  String accessToken="";
   bool currentSongFetched = false;
   bool featuresFetched = false;
   @override
   void initState() {
     // TODO: implement initState
-    getAccessToken();
+//    getAccessToken();
     super.initState();
   }
 
-  void getAccessToken() async {
+//  void getAccessToken() async {
 //      var credentials = SpotifyApiCredentials("38caca3b2f7649799800f6fab1005d55", "9f065fb6b6064cf6b9f25fecdc0640e7");
-//      var spotify = SpotifyApi(credentials);
-      final grant = SpotifyApi.authorizationCodeGrant(credentials);
-      final redirectUri = 'https://google.com';
-      final scopes = ['user-read-currently-playing'];
-      final authUri = grant.getAuthorizationUrl(
-        Uri.parse(redirectUri),
-        scopes: scopes, // scopes are optional
-      );
-      await redirect(authUri);
-      final responseUri = await listen(redirectUri);
-      final spotify = SpotifyApi.fromAuthCodeGrant(grant, responseUri);
-
-//      credentials = await spotify.getCredentials();
-//      print('\nCredentials:');
-//      print('Client Id: ${credentials.clientId}');
-//      print('Access Token: ${credentials.accessToken}');
-//      accessToken = credentials.accessToken!;
-//      print(accessToken);
-//      print('Credentials Expired: ${credentials.isExpired}');
-    }
+////      var spotify = SpotifyApi(credentials);
+//      final grant = SpotifyApi.authorizationCodeGrant(credentials);
+//      final redirectUri = 'https://example.com/auth';
+//      final scopes = ['user-read-currently-playing'];
+//      final authUri = grant.getAuthorizationUrl(
+//        Uri.parse(redirectUri),
+//        scopes: scopes, // scopes are optional
+//      );
+//      String responseUri="";
+//    WebView(
+//      javascriptMode: JavascriptMode.unrestricted,
+//      initialUrl: authUri.toString(),
+//      navigationDelegate: (navReq) {
+//        if (navReq.url.startsWith(redirectUri)) {
+//          responseUri = navReq.url;
+//          return NavigationDecision.prevent;
+//        }
+//
+//        return NavigationDecision.navigate;
+//      },
+//    );
+//      final spotify = SpotifyApi.fromAuthCodeGrant(grant, responseUri);
+//      final finalCredentials = await spotify.getCredentials();
+//      print(finalCredentials.accessToken);
+////      credentials = await spotify.getCredentials();
+////      print('\nCredentials:');
+////      print('Client Id: ${credentials.clientId}');
+////      print('Access Token: ${credentials.accessToken}');
+////      accessToken = credentials.accessToken!;
+////      print(accessToken);
+////      print('Credentials Expired: ${credentials.isExpired}');
+//    }
 
   @override
   Widget build(BuildContext context) {
@@ -137,7 +148,7 @@ class _GetSongDetailsState extends State<GetSongDetails> {
                               GestureDetector(
                                 onTap: () async {
                                   var url = Uri.parse('https://api.spotify.com/v1/me/player/currently-playing');
-                                  var response = await http.get(url, headers: {"Authorization":"Bearer " + accessToken},);
+                                  var response = await http.get(url, headers: {"Authorization":"Bearer " + token},);
                                   print('Response status: ${response.statusCode}');
                                   print('Response body: ${response.body}');
                                   if(response.statusCode==200){
@@ -226,6 +237,7 @@ class _GetSongDetailsState extends State<GetSongDetails> {
                                     }else{
                                       setState(() {
                                         songFeatures={};
+                                        print(songFeatures);
                                           featuresFetched = false;
                                       });
                                     }
@@ -255,6 +267,65 @@ class _GetSongDetailsState extends State<GetSongDetails> {
                 ),
               ),
 
+              Visibility(
+                visible: featuresFetched,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Container(
+
+                        height: 250,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            gradient: LinearGradient(
+                              begin: Alignment.topRight,
+                              end: Alignment.bottomLeft,
+                              colors: [
+                                Color(0xff373B44),
+                                Color(0xff4286f4),
+                              ],
+                            )),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                GestureDetector(
+                                  onTap: () async {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => MainPage()),
+                                    );
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(20.0),
+                                    child: Text(
+                                      'Connect Bluetooth' + '\n' + 'and Set Ambience',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 22.0,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
 
               // Expanded(
               //   child: Container(
