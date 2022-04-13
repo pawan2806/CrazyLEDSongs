@@ -48,7 +48,7 @@ class _ChatPage extends State<ChatPage> {
   @override
   void initState() {
     String finalString="";
-    finalString = finalString + ((songFeatures["length"]=="null"||songFeatures["length"]==null)?(0.55).toString():songFeatures["length"].toString()) + "," + songFeatures["danceability"].toString() + "," + songFeatures["acousticness"].toString() + "," + songFeatures["energy"].toString() + "," + songFeatures["instrumentalness"].toString() + "," + songFeatures["liveness"].toString() + "," + songFeatures["valence"].toString() + "," + songFeatures["loudness"].toString() + "," + songFeatures["speechiness"].toString() + "," + songFeatures["tempo"].toString();
+    finalString = finalString + ((songFeatures["length"]=="null"||songFeatures["length"]==null)?(0.55).toString():songFeatures["length"].toString()) + "," + songFeatures["danceability"].toString() + "," + songFeatures["acousticness"].toString() + "," + songFeatures["energy"].toString() + "," + songFeatures["instrumentalness"].toString() + "," + songFeatures["liveness"].toString() + "," + songFeatures["valence"].toString() + "," + songFeatures["loudness"].toString() + "," + songFeatures["speechiness"].toString() + "," + songFeatures["tempo"].toString() + ",";;
     print(finalString);
     super.initState();
     BluetoothConnection.toAddress(widget.server.address).then((_connection) {
@@ -185,7 +185,7 @@ class _ChatPage extends State<ChatPage> {
                   padding: const EdgeInsets.only(
                       right: 30.0, left: 30.0, top: 20, bottom: 20.0),
                   child: Text(
-                    "Drink-a-Bot Controls",
+                    "Crazy LED Controls",
                     style: TextStyle(
                       fontSize: 18,
                       color: greyShade,
@@ -197,106 +197,106 @@ class _ChatPage extends State<ChatPage> {
             ),
             //Text("Remote Control Car Controls"),
             SizedBox(height: 20),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  margin: const EdgeInsets.all(8.0),
-                  child: IconButton(
-                      icon: const Icon(
-                        Icons.arrow_circle_up,
-                        size: 35.0,
-                      ),
-                      onPressed: isConnected ? () => _sendMessage('F') : null),
-                ),
-              ],
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  margin: const EdgeInsets.all(8.0),
-                  child: IconButton(
-                      icon: const Icon(
-                        Icons.arrow_back,
-                        size: 35.0,
-                      ),
-                      onPressed: isConnected ? () => _sendMessage('L') : null),
-                ),
-                Container(
-                  margin: const EdgeInsets.all(8.0),
-                  child: IconButton(
-                      icon: const Icon(
-                        Icons.arrow_forward,
-                        size: 35.0,
-                      ),
-                      onPressed: isConnected ? () => _sendMessage('R') : null),
-                ),
-              ],
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  margin: const EdgeInsets.all(8.0),
-                  child: IconButton(
-                      icon: const Icon(
-                        Icons.arrow_circle_down,
-                        size: 35.0,
-                      ),
-                      onPressed: isConnected ? () => _sendMessage('B') : null),
-                ),
-              ],
-            ),
-             SizedBox(height: 20),
-            
-           
-
-            Padding(
-              padding:
-                  const EdgeInsets.only( left: 15.0, right: 15.0, bottom: 15.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.white,
-                      onPrimary: greyShade,
-                      side: BorderSide(
-                        width: 3,
-                        color: greyShade,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                    onPressed: isConnected
-                        ? () {
-                            _sendMessage('V');
-                            if (lowVolume) {
-                              _showMaterialDialog();
-                            }
-                          }
-                        : null,
-                    child: Padding(
-                      padding: const EdgeInsets.only(bottom:8.0),
-                      child: Text(
-                        'Get Volume',
-                        style: TextStyle(
-                          color: greyShade,
-                          fontSize: 16.0,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
+//            Row(
+//              crossAxisAlignment: CrossAxisAlignment.center,
+//              mainAxisAlignment: MainAxisAlignment.center,
+//              children: <Widget>[
+//                Container(
+//                  margin: const EdgeInsets.all(8.0),
+//                  child: IconButton(
+//                      icon: const Icon(
+//                        Icons.arrow_circle_up,
+//                        size: 35.0,
+//                      ),
+//                      onPressed: isConnected ? () => _sendMessage('F') : null),
+//                ),
+//              ],
+//            ),
+//            Row(
+//              crossAxisAlignment: CrossAxisAlignment.center,
+//              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//              children: [
+//                Container(
+//                  margin: const EdgeInsets.all(8.0),
+//                  child: IconButton(
+//                      icon: const Icon(
+//                        Icons.arrow_back,
+//                        size: 35.0,
+//                      ),
+//                      onPressed: isConnected ? () => _sendMessage('L') : null),
+//                ),
+//                Container(
+//                  margin: const EdgeInsets.all(8.0),
+//                  child: IconButton(
+//                      icon: const Icon(
+//                        Icons.arrow_forward,
+//                        size: 35.0,
+//                      ),
+//                      onPressed: isConnected ? () => _sendMessage('R') : null),
+//                ),
+//              ],
+//            ),
+//            Row(
+//              crossAxisAlignment: CrossAxisAlignment.center,
+//              mainAxisAlignment: MainAxisAlignment.center,
+//              children: <Widget>[
+//                Container(
+//                  margin: const EdgeInsets.all(8.0),
+//                  child: IconButton(
+//                      icon: const Icon(
+//                        Icons.arrow_circle_down,
+//                        size: 35.0,
+//                      ),
+//                      onPressed: isConnected ? () => _sendMessage('B') : null),
+//                ),
+//              ],
+//            ),
+//             SizedBox(height: 20),
+//
+//
+//
+//            Padding(
+//              padding:
+//                  const EdgeInsets.only( left: 15.0, right: 15.0, bottom: 15.0),
+//              child: Row(
+//                mainAxisAlignment: MainAxisAlignment.center,
+//                crossAxisAlignment: CrossAxisAlignment.center,
+//                children: [
+//                  ElevatedButton(
+//                    style: ElevatedButton.styleFrom(
+//                      primary: Colors.white,
+//                      onPrimary: greyShade,
+//                      side: BorderSide(
+//                        width: 3,
+//                        color: greyShade,
+//                      ),
+//                      shape: RoundedRectangleBorder(
+//                        borderRadius: BorderRadius.circular(10),
+//                      ),
+//                    ),
+//                    onPressed: isConnected
+//                        ? () {
+//                            _sendMessage('V');
+//                            if (lowVolume) {
+//                              _showMaterialDialog();
+//                            }
+//                          }
+//                        : null,
+//                    child: Padding(
+//                      padding: const EdgeInsets.only(bottom:8.0),
+//                      child: Text(
+//                        'Get Volume',
+//                        style: TextStyle(
+//                          color: greyShade,
+//                          fontSize: 16.0,
+//                        ),
+//                        textAlign: TextAlign.center,
+//                      ),
+//                    ),
+//                  )
+//                ],
+//              ),
+//            ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -315,7 +315,7 @@ class _ChatPage extends State<ChatPage> {
 //                        String jsonString = json.encode(songFeatures);
                         //USE THESE AGAR JSON WALA NA CHALE and comment upar wali lines 312-315. Also 320 me _sendMessage ka paramter change karna hoga, iska output is 0.55,0.2,0.5 aise karke..
                         String finalString="";
-                          finalString = finalString + ((songFeatures["length"]=="null"||songFeatures["length"]==null)?(0.55).toString():songFeatures["length"].toString()) + "," + songFeatures["danceability"].toString() + "," + songFeatures["acousticness"].toString() + "," + songFeatures["energy"].toString() + "," + songFeatures["instrumentalness"].toString() + "," + songFeatures["liveness"].toString() + "," + songFeatures["valence"].toString() + "," + songFeatures["loudness"].toString() + "," + songFeatures["speechiness"].toString() + "," + songFeatures["tempo"].toString();
+                          finalString = finalString + ((songFeatures["length"]=="null"||songFeatures["length"]==null)?(0.55).toString():songFeatures["length"].toString()) + "," + songFeatures["danceability"].toString() + "," + songFeatures["acousticness"].toString() + "," + songFeatures["energy"].toString() + "," + songFeatures["instrumentalness"].toString() + "," + songFeatures["liveness"].toString() + "," + songFeatures["valence"].toString() + "," + songFeatures["loudness"].toString() + "," + songFeatures["speechiness"].toString() + "," + songFeatures["tempo"].toString() + ",";
                           print(finalString);
                         _sendMessage(finalString);
                       }:null),
