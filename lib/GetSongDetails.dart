@@ -17,6 +17,8 @@ import './ChatPage.dart';
 import './DiscoveryPage.dart';
 import './SelectBondedDevicePage.dart';
 import 'package:spotify/spotify.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 class GetSongDetails extends StatefulWidget {
   @override
   _GetSongDetailsState createState() => _GetSongDetailsState();
@@ -26,17 +28,32 @@ class _GetSongDetailsState extends State<GetSongDetails> {
 
   String currentSongName="";
   String currentSongId="";
-  static const token = "BQBWcgDYLscfjbfyeodJ0kEyhFZwlAsh7eolPkbkzym84xdeoVnIr_rCw1a2jrYiVT3S9oVYPqNOuT9FgZKibDe1LXJcpKGYoOYVVKpNviPquV4VnEmmFxbJTTPqkpHVLS48zIfPq4lZr_wPd_pw17XTvBYkXzTTn0ol92eqR78I";
-//  String accessToken="";
+//  static const token = "BQCF1vidx4ceTtx61NmkffZzMB2OzCR9CveHvvvQvvlw9MkhvDuA_VsBLOVOyqTa6izgAXfZ8UWW9mrrg-FzAGasDmShDYL8wpb-vTQUDy1ZdpeXjsNCx7ebb8sXb-vM9pUf0US91MZcja_At9btmVmekGgM8liiSXE_6K-9hRT1";
+  String token="";
+  //  String accessToken="";
   bool currentSongFetched = false;
   bool featuresFetched = false;
   @override
   void initState() {
     // TODO: implement initState
-//    getAccessToken();
+    getAccessToken();
     super.initState();
   }
-
+  void getAccessToken() async{
+    CollectionReference tokens = FirebaseFirestore.instance.collection('tokens');
+    DocumentSnapshot snapshot = await tokens.doc("spotifyTokens").get();
+//    Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
+//    print(snapshot.get("token"));
+    token = snapshot.get("token");
+//    print(data);
+//    final DocumentReference document =  FirebaseFirestore.instance.collection("tokens").doc('token');
+//    await document.get().then<dynamic>(( DocumentSnapshot snapshot) async{
+//      setState(() {
+//        data = snapshot.data;
+//      });
+//    });
+//    Map<String, dynamic> data = snapshot.get(field)
+  }
 //  void getAccessToken() async {
 //      var credentials = SpotifyApiCredentials("38caca3b2f7649799800f6fab1005d55", "9f065fb6b6064cf6b9f25fecdc0640e7");
 ////      var spotify = SpotifyApi(credentials);

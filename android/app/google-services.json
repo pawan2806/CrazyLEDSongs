@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "904832372944",
+    "project_id": "crazyled",
+    "storage_bucket": "crazyled.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:904832372944:android:28b21e738e28a357d58ed5",
+        "android_client_info": {
+          "package_name": "com.sahil.crazy_led_songs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "904832372944-3572m1a1l11up4ou1gem4evg0ildp5nq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sahil.crazy_led_songs",
+            "certificate_hash": "8c7d358144e76b1f913556d92f00872eae1b86e5"
+          }
+        },
+        {
+          "client_id": "904832372944-hqjj7k7d9c0ge0d7eic33vui94rf3r9g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_uAR7xz7s1rQtn83TrepQqcz6fPdp3I0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "904832372944-hqjj7k7d9c0ge0d7eic33vui94rf3r9g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

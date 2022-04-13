@@ -47,9 +47,9 @@ class _ChatPage extends State<ChatPage> {
 
   @override
   void initState() {
-//    String finalString="";
-//    finalString = finalString + ((songFeatures["length"]=="null"||songFeatures["length"]==null)?(0.55).toString():songFeatures["length"].toString()) + "," + songFeatures["danceability"].toString() + "," + songFeatures["acousticness"].toString() + "," + songFeatures["energy"].toString() + "," + songFeatures["instrumentalness"].toString() + "," + songFeatures["liveness"].toString() + "," + songFeatures["valence"].toString() + "," + songFeatures["loudness"].toString() + "," + songFeatures["speechiness"].toString() + "," + songFeatures["tempo"].toString();
-//    print(finalString);
+    String finalString="";
+    finalString = finalString + ((songFeatures["length"]=="null"||songFeatures["length"]==null)?(0.55).toString():songFeatures["length"].toString()) + "," + songFeatures["danceability"].toString() + "," + songFeatures["acousticness"].toString() + "," + songFeatures["energy"].toString() + "," + songFeatures["instrumentalness"].toString() + "," + songFeatures["liveness"].toString() + "," + songFeatures["valence"].toString() + "," + songFeatures["loudness"].toString() + "," + songFeatures["speechiness"].toString() + "," + songFeatures["tempo"].toString();
+    print(finalString);
     super.initState();
     BluetoothConnection.toAddress(widget.server.address).then((_connection) {
       print('Connected to the device');
@@ -312,12 +312,12 @@ class _ChatPage extends State<ChatPage> {
                         if(songFeatures["length"] == "null" || songFeatures["length"]==null){
                           songFeatures["length"] = 0.55;
                         }
-                        String jsonString = json.encode(songFeatures);
+//                        String jsonString = json.encode(songFeatures);
                         //USE THESE AGAR JSON WALA NA CHALE and comment upar wali lines 312-315. Also 320 me _sendMessage ka paramter change karna hoga, iska output is 0.55,0.2,0.5 aise karke..
-//                        String finalString="";
-////    finalString = finalString + ((songFeatures["length"]=="null"||songFeatures["length"]==null)?(0.55).toString():songFeatures["length"].toString()) + "," + songFeatures["danceability"].toString() + "," + songFeatures["acousticness"].toString() + "," + songFeatures["energy"].toString() + "," + songFeatures["instrumentalness"].toString() + "," + songFeatures["liveness"].toString() + "," + songFeatures["valence"].toString() + "," + songFeatures["loudness"].toString() + "," + songFeatures["speechiness"].toString() + "," + songFeatures["tempo"].toString();
-////    print(finalString);
-                        _sendMessage(jsonString);
+                        String finalString="";
+                          finalString = finalString + ((songFeatures["length"]=="null"||songFeatures["length"]==null)?(0.55).toString():songFeatures["length"].toString()) + "," + songFeatures["danceability"].toString() + "," + songFeatures["acousticness"].toString() + "," + songFeatures["energy"].toString() + "," + songFeatures["instrumentalness"].toString() + "," + songFeatures["liveness"].toString() + "," + songFeatures["valence"].toString() + "," + songFeatures["loudness"].toString() + "," + songFeatures["speechiness"].toString() + "," + songFeatures["tempo"].toString();
+                          print(finalString);
+                        _sendMessage(finalString);
                       }:null),
                 ),
               ],
